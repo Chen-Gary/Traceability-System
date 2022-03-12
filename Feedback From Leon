@@ -1,0 +1,32 @@
+1. Presentation 大纲 哪些部分是重点
+  项目的场景
+  为什么选这个
+  联络人/公司内容
+  Background
+  设计Design
+  Data diagram
+  下一步/难点/Learning Point
+
+2. Report 内容 哪些部分是重点
+  参考sample和 rubraic就可以 跟
+
+
+3. Composer vs. Fabric 区别
+  概念上是一样的
+  设计层面：
+  composer不用编程
+  Fabric 需要自己写程序 可以调整更多东西
+  composer的东西可以用fabric打开
+  composer的可以用fabric implement
+
+
+4. 项目框架feedback
+  首先解决数据篡改的问题
+  防坏人- 电池坏了怎么追踪
+  
+5. 技术上还有前端如何实现
+
+composer已经实现前段
+composer的基础上加入Fabric进行优化
+
+6. 推迟期中
