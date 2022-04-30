@@ -47,3 +47,25 @@ async function convertRawMaterial2battery(convert_rawMaterial2battery) {
 
     await assetRegistry.add(battery);
 }
+
+
+/**
+ * Test query
+ * @param {org.traceabilitysystem.QueryTest} queryTest
+ * @transaction
+ */
+async function myQueryTest(queryTest) {
+    var q = buildQuery('SELECT org.traceabilitysystem.Battery WHERE (batchID == _$inputValue)');
+
+    console.log("[DEBUG] queryTest.battery = " + queryTest.battery.getIdentifier());
+    
+    return query(q, { inputValue: queryTest.battery.getIdentifier() })
+    .then(function (assets) {
+        assets.forEach(function (asset) {
+            console.log(JSON.stringify(asset));
+        });
+    })
+    .catch(function (error) {
+        // Add optional error handling here.
+    });
+}

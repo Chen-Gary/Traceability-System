@@ -36,7 +36,7 @@ asset Battery identified by batchID {
     o String creationDate
 
     // traceability feature
-    --> RawMaterial[] rawMaterialBatchID
+    --> RawMaterial[] rawMaterialBatchID optional
 
     // foreign key
     --> Player owner
@@ -131,4 +131,10 @@ transaction Convert_battery2eletricTool {
 }
 
 transaction Transfer {
+}
+
+
+transaction QueryTest {
+    --> Battery battery
+    //o String battery
 }
