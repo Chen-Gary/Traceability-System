@@ -1,4 +1,4 @@
-namespace mds6117Project
+namespace org.traceabilitysystem
 
 /*
  * asset:
@@ -8,10 +8,10 @@ namespace mds6117Project
  */
 
 // 1. asset - raw materials
-asset RawMaterial identified by BatchID {
+asset RawMaterial identified by batchID {
 
     // primary key
-    o String BatchID
+    o String batchID
 
     // attributes
     o String materialType
@@ -25,10 +25,10 @@ asset RawMaterial identified by BatchID {
 
 
 // 2. asset - battery
-asset Battery identified by BatchID {
+asset Battery identified by batchID {
 
     // primary key
-    o String BatchID
+    o String batchID
 
     // attributes
     o String model      //型号
@@ -45,10 +45,10 @@ asset Battery identified by BatchID {
 
 
 // 3. asset - eletricTool
-asset EletricTool identified by BatchID {
+asset EletricTool identified by batchID {
   
     // primary key
-    o String BatchID
+    o String batchID
 
     // attributes
     o String type
@@ -82,7 +82,7 @@ participant Player identified by playerID {
 
     // attributes
     o String institutionName
-    o String role     //allowed value: materialSupplier, ...
+    o String role               //allowed value: materialSupplier, ...
     o String contact
     o String address
     o String description
@@ -93,7 +93,7 @@ participant Player identified by playerID {
 
 /*
  * transaction:
- *  - Creation
+ *  - Creation (rawMaterial)
  *  - Convert
  *      - (raw material to battery)
  *      - (battery to eletricTool)
@@ -103,6 +103,14 @@ participant Player identified by playerID {
  */
 
 transaction Creation {
+    o String BatchID
+
+    o String materialType
+    o String description
+    o String quality
+    o String creationDate
+
+    --> Player owner
 }
 
 transaction Convert {
