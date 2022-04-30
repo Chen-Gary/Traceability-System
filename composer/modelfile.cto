@@ -1,0 +1,112 @@
+namespace mds6117Project
+
+/*
+ * asset:
+ *  - raw materials (lithium, copper)
+ *  - battery
+ *  - eletricTool
+ */
+
+// 1. asset - raw materials
+asset RawMaterial identified by BatchID {
+
+    // primary key
+    o String BatchID
+
+    // attributes
+    o String materialType
+    o String description
+    o String quality
+    o String creationDate
+
+    // foreign key
+    --> Player owner
+}
+
+
+// 2. asset - battery
+asset Battery identified by BatchID {
+
+    // primary key
+    o String BatchID
+
+    // attributes
+    o String model      //型号
+    o String quality
+    o String creationDate
+
+    // traceability feature
+    o String rawMaterialBatchID
+    //o String playerIdHistory
+
+    // foreign key
+    --> Player owner
+}
+
+
+// 3. asset - eletricTool
+asset EletricTool identified by BatchID {
+  
+    // primary key
+    o String BatchID
+
+    // attributes
+    o String type
+    o String quality
+    o String creationDate
+
+    // traceability feature
+    o String batteryBatchID
+    //o String playerIdHistory
+
+    // foreign key
+    --> Player owner
+}
+
+
+/////////////////////////////////////////////////////////////////////
+
+/*
+ * participant
+ *  - materialSupplier
+ *  - batterySupplier
+ *  - electronicToolManufacturer
+ *  - logisticsProvider
+ *  - channelPartner
+ */
+
+participant Player identified by playerID {
+
+    // primary key
+    o String playerID
+
+    // attributes
+    o String institutionName
+    o String role     //allowed value: materialSupplier, ...
+    o String contact
+    o String address
+    o String description
+
+}
+
+/////////////////////////////////////////////////////////////////////
+
+/*
+ * transaction:
+ *  - Creation
+ *  - Convert
+ *      - (raw material to battery)
+ *      - (battery to eletricTool)
+ *  - Transfer 
+ *      - (electronicToolManufacturer -> logisticsProvider)
+ *      - (logisticsProvider -> channelPartner)
+ */
+
+transaction Creation {
+}
+
+transaction Convert {
+}
+
+transaction Transfer {
+}
