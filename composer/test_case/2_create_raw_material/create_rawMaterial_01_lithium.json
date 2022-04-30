@@ -1,0 +1,10 @@
+{
+    "$class": "org.traceabilitysystem.Create",
+
+    "batchID": "rawMaterial_01",
+    "materialType": "lithium",
+    "description": "lithium of high quality!!!",
+    "quality": "Good",
+    "creationDate": "2022-04-30",
+    "creator": "resource:org.traceabilitysystem.Player#materialSupplier_01"
+}

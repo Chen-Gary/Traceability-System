@@ -102,8 +102,8 @@ participant Player identified by playerID {
  *      - (logisticsProvider -> channelPartner)
  */
 
-transaction Creation {
-    o String BatchID
+transaction Create {
+    o String batchID
 
     o String materialType
     o String description
