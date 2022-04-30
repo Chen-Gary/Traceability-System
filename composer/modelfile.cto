@@ -110,7 +110,7 @@ transaction Creation {
     o String quality
     o String creationDate
 
-    --> Player owner
+    --> Player creator
 }
 
 transaction Convert {

@@ -1,0 +1,11 @@
+{
+    "$class": "org.traceabilitysystem.Player",
+
+    "playerID": "logisticsProvider_01",
+
+    "institutionName": "XPO Logistics Inc.",
+    "role": "logisticsProvider",
+    "contact": "(844) 742-5976",
+    "address": "Greenwich, Connecticut, U.S.",
+    "description": "This is a logistics provider, who obtain eletric tools from other electronic tool manufacturers."
+}

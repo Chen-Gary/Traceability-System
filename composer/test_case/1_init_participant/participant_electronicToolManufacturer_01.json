@@ -1,0 +1,11 @@
+{
+    "$class": "org.traceabilitysystem.Player",
+
+    "playerID": "electronicToolManufacturer_01",
+
+    "institutionName": "Bosch",
+    "role": "electronicToolManufacturer",
+    "contact": "+49 711 400 40990",
+    "address": "Robert Bosch GmbH Bosch Service Center Postfach 30 02 20 70442 Stuttgart GERMANY",
+    "description": "This is a electronic tool manufacturer, who produces electronic tools using batteries"
+}

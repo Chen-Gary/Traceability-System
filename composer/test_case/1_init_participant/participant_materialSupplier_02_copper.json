@@ -1,0 +1,11 @@
+{
+    "$class": "org.traceabilitysystem.Player",
+
+    "playerID": "materialSupplier_02",
+
+    "institutionName": "Hawk Trading Company",
+    "role": "materialSupplier",
+    "contact": "1-719-5477659",
+    "address": "1184 E. Jesse James Ave. Pueblo West Colorado 81007 United States",
+    "description": "This is a raw material company providing Copper"
+}

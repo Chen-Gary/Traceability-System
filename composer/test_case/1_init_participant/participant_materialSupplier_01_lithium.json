@@ -1,0 +1,11 @@
+{
+    "$class": "org.traceabilitysystem.Player",
+
+    "playerID": "materialSupplier_01",
+
+    "institutionName": "Koncrete Imports Llc",
+    "role": "materialSupplier",
+    "contact": "1-7738767444",
+    "address": "Chicago, Illinois, USA",
+    "description": "This is a raw material company providing Lithium"
+}
