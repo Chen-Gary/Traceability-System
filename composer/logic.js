@@ -50,6 +50,34 @@ async function convertRawMaterial2battery(convert_rawMaterial2battery) {
 
 
 /**
+ * Convert: battery to eletric tool.
+ * New EletricTool instance is created, basing on Battery(s).
+ * @param {org.traceabilitysystem.Convert_battery2eletricTool} convert_battery2eletricTool
+ * @transaction
+ */
+
+async function convertBattery2eletricTool(convert_battery2eletricTool) {
+    let assetRegistry = await getAssetRegistry('org.traceabilitysystem.EletricTool');
+
+    var factory = getFactory();
+
+    var eletricTool = factory.newResource('org.traceabilitysystem', 'EletricTool', convert_battery2eletricTool.batchID);
+
+    eletricTool.type = convert_battery2eletricTool.type;
+    eletricTool.quality = convert_battery2eletricTool.quality;
+    eletricTool.creationDate = convert_battery2eletricTool.creationDate;
+    eletricTool.batteryBatchID = convert_battery2eletricTool.batteryBatchID;
+    eletricTool.owners = [];
+    eletricTool.owners.push( convert_battery2eletricTool.owner );
+
+    await assetRegistry.add(eletricTool);
+}
+
+
+
+
+//--------------------------------------------------------------------
+/**
  * Test query
  * @param {org.traceabilitysystem.QueryTest} queryTest
  * @transaction
