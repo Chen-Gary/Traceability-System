@@ -1,0 +1,127 @@
+================== Receipt ==================
+Query Time: Sun May 01 2022 17:24:07 GMT+0800 (China Standard Time) 
+
+You are trying to query the information of EletricTool - eletricTool_01
+The detailed info of this eletricTool is as follow: 
+{
+    "$class": "org.traceabilitysystem.EletricTool",
+    "batchID": "eletricTool_01",
+    "type": "Electric Drill",
+    "quality": "Good",
+    "creationDate": "2022-05-03",
+    "batteryBatchID": [
+        "resource:org.traceabilitysystem.Battery#battery_01"
+    ],
+    "owners": [
+        "resource:org.traceabilitysystem.Player#electronicToolManufacturer_01",
+        "resource:org.traceabilitysystem.Player#logisticsProvider_01",
+        "resource:org.traceabilitysystem.Player#channelPartner_01"
+    ]
+}
+
+---------------------------------------------------------------------------------------------------------------
+Note that eletricTool_01 was transferred between 3 participants, with playerID: 
+    * electronicToolManufacturer_01
+    * logisticsProvider_01
+    * channelPartner_01
+
+ The detailed info of each of the above participants are as follow: 
+{
+    "$class": "org.traceabilitysystem.Player",
+    "playerID": "electronicToolManufacturer_01",
+    "institutionName": "Bosch",
+    "role": "electronicToolManufacturer",
+    "contact": "+49 711 400 40990",
+    "address": "Robert Bosch GmbH Bosch Service Center Postfach 30 02 20 70442 Stuttgart GERMANY",
+    "description": "This is a electronic tool manufacturer, who produces electronic tools using batteries"
+}
+{
+    "$class": "org.traceabilitysystem.Player",
+    "playerID": "logisticsProvider_01",
+    "institutionName": "XPO Logistics Inc.",
+    "role": "logisticsProvider",
+    "contact": "(844) 742-5976",
+    "address": "Greenwich, Connecticut, U.S.",
+    "description": "This is a logistics provider, who obtain eletric tools from other electronic tool manufacturers."
+}
+{
+    "$class": "org.traceabilitysystem.Player",
+    "playerID": "channelPartner_01",
+    "institutionName": "Walmart",
+    "role": "channelPartner",
+    "contact": "1 (800) 925-6278",
+    "address": "Bentonville, Arkansas",
+    "description": "This is a channel partner, who obtain eletric tools from other logistics providers."
+}
+
+
+---------------------------------------------------------------------------------------------------------------
+Note that eletricTool_01 was made from 1 batteries, with batchID: 
+    * battery_01
+
+The detailed info of each of the above batteries are as follow: 
+{
+    "$class": "org.traceabilitysystem.Battery",
+    "batchID": "battery_01",
+    "model": "CR123A",
+    "quality": "Good",
+    "creationDate": "2022-05-01",
+    "rawMaterialBatchID": [
+        "resource:org.traceabilitysystem.RawMaterial#rawMaterial_01",
+        "resource:org.traceabilitysystem.RawMaterial#rawMaterial_02"
+    ],
+    "owner": "resource:org.traceabilitysystem.Player#materialSupplier_01"
+}
+
+
+[DETAIL OF battery_01] -------------------------------------------------------
+	Note that the owner of battery_01 is materialSupplier_01, which detailed info is as follow: 
+
+{
+    "$class": "org.traceabilitysystem.Player",
+    "playerID": "materialSupplier_01",
+    "institutionName": "Koncrete Imports Llc",
+    "role": "materialSupplier",
+    "contact": "1-7738767444",
+    "address": "Chicago, Illinois, USA",
+    "description": "This is a raw material company providing Lithium"
+}
+
+
+[DETAIL OF battery_01] -------------------------------------------------------
+	Note that battery_01 is made of 2 raw materials
+	The details of each raw materials are as follow:
+{
+    "$class": "org.traceabilitysystem.RawMaterial",
+    "batchID": "rawMaterial_01",
+    "materialType": "lithium",
+    "description": "lithium of high quality!!!",
+    "quality": "Good",
+    "creationDate": "2022-04-30",
+    "owner": {
+        "$class": "org.traceabilitysystem.Player",
+        "playerID": "materialSupplier_01",
+        "institutionName": "Koncrete Imports Llc",
+        "role": "materialSupplier",
+        "contact": "1-7738767444",
+        "address": "Chicago, Illinois, USA",
+        "description": "This is a raw material company providing Lithium"
+    }
+}
+{
+    "$class": "org.traceabilitysystem.RawMaterial",
+    "batchID": "rawMaterial_02",
+    "materialType": "copper",
+    "description": "copper of medium quality!!!",
+    "quality": "Medium",
+    "creationDate": "2022-04-29",
+    "owner": {
+        "$class": "org.traceabilitysystem.Player",
+        "playerID": "materialSupplier_02",
+        "institutionName": "Hawk Trading Company",
+        "role": "materialSupplier",
+        "contact": "1-719-5477659",
+        "address": "1184 E. Jesse James Ave. Pueblo West Colorado 81007 United States",
+        "description": "This is a raw material company providing Copper"
+    }
+}
