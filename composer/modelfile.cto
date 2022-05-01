@@ -143,8 +143,15 @@ transaction Transfer {
 }
 
 
+
+// implement query using transaction
+
 // [debug]
 transaction QueryTest {
     --> Battery battery
     //o String battery
+}
+
+transaction QueryByCustomer {
+    --> EletricTool eletricTool
 }

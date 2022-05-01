@@ -91,25 +91,46 @@ async function transferEletricToolOwnership(transfer) {
 }
 
 
+//---------------- implement query using transaction ----------------
 
-//--------------------------------------------------------------------
 /**
  * [debug] Test query
  * @param {org.traceabilitysystem.QueryTest} queryTest
  * @transaction
  */
 async function myQueryTest(queryTest) {
-    var q = buildQuery('SELECT org.traceabilitysystem.Battery WHERE (batchID == _$inputValue)');
+    //var q = buildQuery('SELECT org.traceabilitysystem.Battery WHERE (batchID == _$inputValue)');
 
     console.log("[DEBUG] queryTest.battery = " + queryTest.battery.getIdentifier());
     
-    return query(q, { inputValue: queryTest.battery.getIdentifier() })
+    return query('getBatteryDetails', { inputValue: queryTest.battery.getIdentifier() })
     .then(function (assets) {
         assets.forEach(function (asset) {
-            console.log(JSON.stringify(asset));
+            console.log(JSON.stringify(asset, null, 4));
         });
     })
     .catch(function (error) {
         // Add optional error handling here.
     });
+}
+
+/**
+ * Query eletricTool info by customer
+ * @param {org.traceabilitysystem.QueryByCustomer} queryByCustomer
+ * @transaction
+ */
+
+async function queryEletricToolInfoByCustomer(queryByCustomer) {
+    let receipt = "================== Receipt ==================\n" + 
+                `Query Time: ${Date().toString()} \n`;
+
+    eletricTool_batchID = queryByCustomer.eletricTool.getIdentifier();
+
+    receipt += `\nYou are trying to query the information of EletricTool - ${eletricTool_batchID}\n`;
+    receipt += `The detailed info of this eletricTool is as follow: \n`;
+
+
+    assets = await query('getEletricToolDetails', { inputValue: queryByCustomer.eletricTool.getIdentifier() });
+
+    console.log(receipt + JSON.stringify(assets, null, 4));
 }

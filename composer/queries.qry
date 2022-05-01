@@ -1,0 +1,14 @@
+query getBatteryDetails {
+  description: "get Battery Details"
+  statement: 
+    SELECT org.traceabilitysystem.Battery
+    WHERE (batchID == _$inputValue)
+}
+
+
+query getEletricToolDetails {
+  description: "get EletricTool Details"
+  statement: 
+    SELECT org.traceabilitysystem.EletricTool
+    WHERE (batchID == _$inputValue)
+}

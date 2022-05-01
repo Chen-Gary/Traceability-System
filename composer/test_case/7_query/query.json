@@ -1,0 +1,4 @@
+{
+    "$class": "org.traceabilitysystem.QueryByCustomer",
+    "eletricTool": "resource:org.traceabilitysystem.EletricTool#eletricTool_01"
+}
