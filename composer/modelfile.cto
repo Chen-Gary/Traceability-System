@@ -138,9 +138,12 @@ transaction Convert_battery2eletricTool {
 }
 
 transaction Transfer {
+    --> EletricTool eletricTool
+    --> Player nextOwner
 }
 
 
+// [debug]
 transaction QueryTest {
     --> Battery battery
     //o String battery

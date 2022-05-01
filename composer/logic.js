@@ -74,11 +74,27 @@ async function convertBattery2eletricTool(convert_battery2eletricTool) {
 }
 
 
+/**
+ * Transfer
+ *      - (electronicToolManufacturer -> logisticsProvider)
+ *      - (logisticsProvider -> channelPartner)
+ * Update an EletricTool instance.
+ * @param {org.traceabilitysystem.Transfer} transfer
+ * @transaction
+ */
+
+async function transferEletricToolOwnership(transfer) {
+    transfer.eletricTool.owners.push( transfer.nextOwner );
+
+    let assetRegistry = await getAssetRegistry('org.traceabilitysystem.EletricTool');
+    await assetRegistry.update(transfer.eletricTool);
+}
+
 
 
 //--------------------------------------------------------------------
 /**
- * Test query
+ * [debug] Test query
  * @param {org.traceabilitysystem.QueryTest} queryTest
  * @transaction
  */

@@ -1,0 +1,6 @@
+{
+    "$class": "org.traceabilitysystem.Transfer",
+
+    "eletricTool": "resource:org.traceabilitysystem.EletricTool#eletricTool_01",
+    "nextOwner": "resource:org.traceabilitysystem.Player#logisticsProvider_01"
+}
