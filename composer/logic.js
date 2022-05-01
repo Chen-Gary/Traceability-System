@@ -126,11 +126,72 @@ async function queryEletricToolInfoByCustomer(queryByCustomer) {
 
     eletricTool_batchID = queryByCustomer.eletricTool.getIdentifier();
 
+    // info of EletricTool itself
     receipt += `\nYou are trying to query the information of EletricTool - ${eletricTool_batchID}\n`;
     receipt += `The detailed info of this eletricTool is as follow: \n`;
 
 
-    assets = await query('getEletricToolDetails', { inputValue: queryByCustomer.eletricTool.getIdentifier() });
+    eletricTools = await query('getEletricToolDetails', { inputValue: queryByCustomer.eletricTool.getIdentifier() });
+    eletricTool = eletricTools[0];
+    receipt += JSON.stringify(eletricTool, null, 4);
 
-    console.log(receipt + JSON.stringify(assets, null, 4));
+
+    // info of EletricTool.owners
+    receipt += `\n\n---------------------------------------------------------------------------------------------------------------\n`;
+    receipt += `Note that ${eletricTool_batchID} was transferred between ${eletricTool.owners.length} participants, with playerID: \n`;
+    eletricTool.owners.forEach((owner)=>{
+        receipt += `    * ${owner.getIdentifier()}\n`;
+    });
+
+    receipt += `\n The detailed info of each of the above participants are as follow: \n`;
+    for (const owner of eletricTool.owners) {
+        const playerDetails = await query('getPlayerDetails', { inputValue: owner.getIdentifier() });
+        const playerDetail = playerDetails[0];
+        receipt += `${JSON.stringify(playerDetail, null, 4)}\n`;
+    }
+
+
+    // info of EletricTool.batteryBatchID
+    receipt += `\n\n---------------------------------------------------------------------------------------------------------------\n`;
+    receipt += `Note that ${eletricTool_batchID} was made from ${eletricTool.batteryBatchID.length} batteries, with batchID: \n`;
+    eletricTool.batteryBatchID.forEach((battery)=>{
+        receipt += `    * ${battery.getIdentifier()}\n`;
+    });
+
+    // print the details of each battery, including their "owner", "rawMaterialBatchID"
+    // (usually there should be only one battery)
+    receipt += `\nThe detailed info of each of the above batteries are as follow: \n`;
+    for (const battery_resource of eletricTool.batteryBatchID) {
+        const battery_batchID = battery_resource.getIdentifier();
+        const batteries = await query('getBatteryDetails', { inputValue: battery_batchID });
+        const battery = batteries[0];
+
+        // info of this battery itself
+        receipt += `${JSON.stringify(battery, null, 4)}\n`;
+
+        // info of this battery.owner
+        receipt += `\n\n[DETAIL OF ${battery_batchID}] -------------------------------------------------------\n`;
+        receipt += `\tNote that the owner of ${battery_batchID} is ${battery.owner.getIdentifier()}, which detailed info is as follow: \n\n`;
+        const battery_owner = (await query('getPlayerDetails', { inputValue: battery.owner.getIdentifier() }))[0];
+        receipt += `${JSON.stringify(battery_owner, null, 4)}\n`;
+
+        // info of this battery.RawMaterial
+        receipt += `\n\n[DETAIL OF ${battery_batchID}] -------------------------------------------------------\n`;
+        receipt += `\tNote that ${battery_batchID} is made of ${battery.rawMaterialBatchID.length} raw materials\n`;
+        receipt += `\tThe details of each raw materials are as follow:\n`;
+
+        for (const rawMaterial_resource of battery.rawMaterialBatchID) {
+            const rawMaterial_batchID = rawMaterial_resource.getIdentifier();
+            const rawMaterial = (await query('getRawMaterialDetails', { inputValue: rawMaterial_batchID }))[0];
+
+            const rawMaterial_owner_playerID = rawMaterial.owner.getIdentifier();
+            const rawMaterial_owner = (await query('getPlayerDetails', { inputValue: rawMaterial_owner_playerID }))[0];
+            rawMaterial.owner = rawMaterial_owner;
+
+            receipt += `${JSON.stringify(rawMaterial, null, 4)}\n`;
+        }
+    }
+
+
+    console.log(receipt);
 }

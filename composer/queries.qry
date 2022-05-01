@@ -1,3 +1,11 @@
+query getRawMaterialDetails {
+  description: "get RawMaterial Details"
+  statement: 
+    SELECT org.traceabilitysystem.RawMaterial
+    WHERE (batchID == _$inputValue)
+}
+
+
 query getBatteryDetails {
   description: "get Battery Details"
   statement: 
@@ -11,4 +19,12 @@ query getEletricToolDetails {
   statement: 
     SELECT org.traceabilitysystem.EletricTool
     WHERE (batchID == _$inputValue)
+}
+
+
+query getPlayerDetails {
+  description: "get Player Details"
+  statement: 
+    SELECT org.traceabilitysystem.Player
+    WHERE (playerID == _$inputValue)
 }
