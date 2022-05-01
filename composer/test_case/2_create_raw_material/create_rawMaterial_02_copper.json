@@ -1,0 +1,10 @@
+{
+    "$class": "org.traceabilitysystem.Create",
+
+    "batchID": "rawMaterial_02",
+    "materialType": "copper",
+    "description": "copper of medium quality!!!",
+    "quality": "Medium",
+    "creationDate": "2022-04-29",
+    "creator": "resource:org.traceabilitysystem.Player#materialSupplier_02"
+}

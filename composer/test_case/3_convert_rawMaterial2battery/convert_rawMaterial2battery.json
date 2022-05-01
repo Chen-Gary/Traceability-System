@@ -1,0 +1,10 @@
+{
+    "$class": "org.traceabilitysystem.Convert_rawMaterial2battery",
+
+    "batchID": "battery_01",
+    "model": "CR123A",
+    "quality": "Good",
+    "creationDate": "2022-05-01",
+    "rawMaterialBatchID": ["rawMaterial_01", "rawMaterial_02"],
+    "owner": "resource:org.traceabilitysystem.Player#materialSupplier_01"
+}

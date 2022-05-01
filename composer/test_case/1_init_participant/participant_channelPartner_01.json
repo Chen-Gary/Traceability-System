@@ -1,0 +1,11 @@
+{
+    "$class": "org.traceabilitysystem.Player",
+
+    "playerID": "channelPartner_01",
+
+    "institutionName": "Walmart",
+    "role": "channelPartner",
+    "contact": "1 (800) 925-6278",
+    "address": "Bentonville, Arkansas",
+    "description": "This is a channel partner, who obtain eletric tools from other logistics providers."
+}

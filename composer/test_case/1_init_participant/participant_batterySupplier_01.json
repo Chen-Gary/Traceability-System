@@ -1,0 +1,11 @@
+{
+    "$class": "org.traceabilitysystem.Player",
+
+    "playerID": "batterySupplier_01",
+
+    "institutionName": "F.W. Webb Company",
+    "role": "batterySupplier",
+    "contact": "781-272-6600",
+    "address": "Bedford, MA 01730",
+    "description": "This is a battery supplier, who produces batteries using raw materials"
+}

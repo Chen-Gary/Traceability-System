@@ -1,0 +1,10 @@
+{
+    "$class": "org.traceabilitysystem.Convert_battery2eletricTool",
+
+    "batchID": "eletricTool_01",
+    "type": "Electric Drill",
+    "quality": "Good",
+    "creationDate": "2022-05-03",
+    "batteryBatchID": ["battery_01"],
+    "owner": "resource:org.traceabilitysystem.Player#electronicToolManufacturer_01"
+}

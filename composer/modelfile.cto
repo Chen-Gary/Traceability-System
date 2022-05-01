@@ -20,6 +20,8 @@ asset RawMaterial identified by batchID {
     o String creationDate
 
     // foreign key
+    // [Note] we do not consider ownership transfer of a RawMaterial instance.
+    //        i.e. the owner of a RawMaterial instance will always be its creator with role: "materialSupplier"
     --> Player owner
 }
 
@@ -36,10 +38,12 @@ asset Battery identified by batchID {
     o String creationDate
 
     // traceability feature
-    o String rawMaterialBatchID
-    //o String playerIdHistory
+    // this Battery instance is made from which "rawMaterialBatchID"
+    --> RawMaterial[] rawMaterialBatchID optional
 
     // foreign key
+    // [Note] we do not consider ownership transfer of a Battery instance.
+    //        i.e. the owner of a Battery instance will always be its creator with role: "batterySupplier"
     --> Player owner
 }
 
@@ -56,11 +60,11 @@ asset EletricTool identified by batchID {
     o String creationDate
 
     // traceability feature
-    o String batteryBatchID
-    //o String playerIdHistory
+    // this EletricTool instance is made from which "batteryBatchID"
+    --> Battery[] batteryBatchID optional
 
-    // foreign key
-    --> Player owner
+    // history owner list of this EletricTool instance
+    --> Player[] owners optional
 }
 
 
@@ -102,19 +106,52 @@ participant Player identified by playerID {
  *      - (logisticsProvider -> channelPartner)
  */
 
-transaction Creation {
-    o String BatchID
+transaction Create {
+    o String batchID      //this parameter should be unique
 
     o String materialType
     o String description
     o String quality
     o String creationDate
+    --> Player creator
+}
 
+
+transaction Convert_rawMaterial2battery {
+    o String batchID      //this parameter should be unique
+
+    o String model
+    o String quality
+    o String creationDate
+    --> RawMaterial[] rawMaterialBatchID
     --> Player owner
 }
 
-transaction Convert {
+transaction Convert_battery2eletricTool {
+    o String batchID      //this parameter should be unique
+
+    o String type
+    o String quality
+    o String creationDate
+    --> Battery[] batteryBatchID
+    --> Player owner
 }
 
 transaction Transfer {
+    --> EletricTool eletricTool
+    --> Player nextOwner
+}
+
+
+
+// implement query using transaction
+
+// [debug]
+transaction QueryTest {
+    --> Battery battery
+    //o String battery
+}
+
+transaction QueryByCustomer {
+    --> EletricTool eletricTool
 }
