@@ -1,5 +1,5 @@
 ================== Receipt ==================
-Query Time: Sun May 01 2022 17:24:07 GMT+0800 (China Standard Time) 
+Query Time: Wed May 04 2022 15:38:44 GMT+0800 (China Standard Time) 
 
 You are trying to query the information of EletricTool - eletricTool_01
 The detailed info of this eletricTool is as follow: 
@@ -70,21 +70,21 @@ The detailed info of each of the above batteries are as follow:
         "resource:org.traceabilitysystem.RawMaterial#rawMaterial_01",
         "resource:org.traceabilitysystem.RawMaterial#rawMaterial_02"
     ],
-    "owner": "resource:org.traceabilitysystem.Player#materialSupplier_01"
+    "owner": "resource:org.traceabilitysystem.Player#batterySupplier_01"
 }
 
 
 [DETAIL OF battery_01] -------------------------------------------------------
-	Note that the owner of battery_01 is materialSupplier_01, which detailed info is as follow: 
+	Note that the owner of battery_01 is batterySupplier_01, which detailed info is as follow: 
 
 {
     "$class": "org.traceabilitysystem.Player",
-    "playerID": "materialSupplier_01",
-    "institutionName": "Koncrete Imports Llc",
-    "role": "materialSupplier",
-    "contact": "1-7738767444",
-    "address": "Chicago, Illinois, USA",
-    "description": "This is a raw material company providing Lithium"
+    "playerID": "batterySupplier_01",
+    "institutionName": "F.W. Webb Company",
+    "role": "batterySupplier",
+    "contact": "781-272-6600",
+    "address": "Bedford, MA 01730",
+    "description": "This is a battery supplier, who produces batteries using raw materials"
 }
 
 
