@@ -1,6 +1,5 @@
-# Traceability-System
-Blockchain-based Battery Traceability System
+# Blockchain-based Battery Traceability System
+The smart contract is implemented in:
 
-
-
-hyper-ledger fabric 
+* Hyperledger Composer
+* Go
